@@ -3,7 +3,7 @@ const num2 = Math.floor(Math.random() * 100) + 1;
 
 const sum = num1 + num2;
 
-console.log(`%c${num1} + ${num2} = ${sum}`, 'color: yellow; font-weight: bold;');
+console.log(`${num1} + ${num2} = ${sum}`, 'color: yellow; font-weight: bold;');
 
 console.log('color: yellow;');
 console.log(`${num1}`, 'color: yellow;');
