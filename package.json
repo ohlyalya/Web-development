@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index",
     "color": "node script.js",
-    "moment": "node moment.cjs"
+    "moment": "node moment.js"
   },
   "keywords": [],
   "author": "",
