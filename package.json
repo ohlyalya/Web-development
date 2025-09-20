@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "color": "node script.js"
+    "color": "node script.js",
+    "moment": "node moment.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.6.2"
+    "chalk": "^5.6.2",
+    "moment": "^2.30.1"
   },
-  "type":"module"
+  "type": "module"
 }
