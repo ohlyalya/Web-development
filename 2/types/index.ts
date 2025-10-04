@@ -1,4 +1,4 @@
-import { LibraryBook } from "./types/LibraryBook";
+import { LibraryBook } from "./LibraryBook";
 
 const book1 = new LibraryBook({
   title: "Преступление и наказание",
