@@ -6,6 +6,7 @@ import Primer5 from "./components/Primer5";
 import Primer6 from "./components/Primer6";
 import Primer7 from "./components/Primer7";
 import CurrencyInput from "./components/CurrencyInput";
+import TodoList from "./components/TodoList";
 import "./App.css";
 
 const App = () => {
@@ -23,6 +24,8 @@ const App = () => {
       </ol>
       <h2>Бонусное задание</h2>
       <CurrencyInput />
+      <h2>Основное задание — TodoList</h2>
+      <TodoList />
     </div>
   );
 };
