@@ -8,6 +8,8 @@ import Primer7 from "./components/Primer7";
 import CurrencyInput from "./components/CurrencyInput";
 import TodoList from "./components/TodoList";
 import ImageSlider from "./components/ImageSlider";
+import Watch from "./components/Watch";
+import Krestikinoliki from "./components/krestikinoliki";
 import "./App.css";
 
 const App = () => {
@@ -34,6 +36,10 @@ const App = () => {
       <TodoList />
       <h2>Слайдер картинок</h2>
       <ImageSlider images={images} />
+      <h2>Секундомер</h2>
+      <Watch/>
+      <h2>Крестики-нолики</h2>
+      <Krestikinoliki />
     </div>
   );
 };
