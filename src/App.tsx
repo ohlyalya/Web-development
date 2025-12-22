@@ -11,6 +11,7 @@ import ImageSlider from "./components/ImageSlider";
 import Watch from "./components/Watch";
 import Krestikinoliki from "./components/Krestikinoliki";
 import Counter from "./components/Counter";
+import Player from "./components/Player";
 import "./App.css";
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
       <h2>Counters</h2>
       <Counter />
       <Counter initialValue={10} />
+      <Player />
     </div>
   );
 };
