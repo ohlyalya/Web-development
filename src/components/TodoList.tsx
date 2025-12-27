@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import TodoItem from "./TodoItem";
 
 const TodoList: React.FC = () => {
-    const [todos, setTodos] = useState<string[]>(["Погамать в дотку", "Покормить кота"]);
+  const [todos, setTodos] = useState<string[]>(["Погамать в дотку", "Покормить кота"]);
 
-    const [doneFlags, setDoneFlags] = useState<boolean[]>([false, false]);
+  const [doneFlags, setDoneFlags] = useState<boolean[]>([false, false]);
 
-    const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>("");
+
+  const [search, setSearch] = useState<string>("");
+
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const addTodo = () => {
     const trimmed = input.trim();
@@ -17,7 +21,7 @@ const TodoList: React.FC = () => {
     setInput("");
   };
 
-   const toggleDone = (index: number) => {
+  const toggleDone = (index: number) => {
     const copy = [...doneFlags];
     copy[index] = !copy[index];
     setDoneFlags(copy);
@@ -30,10 +34,22 @@ const TodoList: React.FC = () => {
     setDoneFlags(newFlags);
   };
 
+  const clearSearch = () => {
+    setSearch("");
+    if (searchRef.current) {
+      searchRef.current.focus();
+    }
+  };
+
+  const filtered = todos.filter((t) =>
+    t.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div style={{ border: "1px solid #ddd", padding: 12, borderRadius: 6, marginTop: 16 }}>
       <h3>Список дел today</h3>
 
+      {/* Добавить новое дело */}
       <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
         <input
           value={input}
@@ -46,14 +62,28 @@ const TodoList: React.FC = () => {
         </button>
       </div>
 
+      {/* Поиск */}
+      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+        <input
+          ref={searchRef}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Поиск по делам"
+          style={{ flex: 1, padding: 6 }}
+        />
+        <button onClick={clearSearch} style={{ padding: "6px 10px" }}>
+          Очистить
+        </button>
+      </div>
+
       <ul style={{ paddingLeft: 0, listStyle: "none" }}>
-        {todos.map((t, i) => (
+        {filtered.map((t, i) => (
           <TodoItem
             key={i}
             text={t}
-            done={doneFlags[i] ?? false}
-            onToggle={() => toggleDone(i)}
-            onDelete={() => deleteTodo(i)}
+            done={doneFlags[todos.indexOf(t)] ?? false}
+            onToggle={() => toggleDone(todos.indexOf(t))}
+            onDelete={() => deleteTodo(todos.indexOf(t))}
           />
         ))}
       </ul>
